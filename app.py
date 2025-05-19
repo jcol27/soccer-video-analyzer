@@ -13,6 +13,9 @@ from matchlogic import *
 from teamlogic import *
 
 class App(tk.Tk):
+    '''
+    Main class for the program
+    '''
     def __init__(self):
         super().__init__()
         self.title("Soccer Video Analysis")
@@ -35,6 +38,9 @@ class App(tk.Tk):
         self.show_frame(IntroScreen)
 
     def load_data(self):
+        '''
+        Load all app data from file
+        '''
         try:
             with open(self.data_file, "r") as f:
                 try:
@@ -55,7 +61,7 @@ class App(tk.Tk):
         data = {
             "teams": {
                 name: {
-                    "players": [player.serialize() for player in team.players],
+                    "squad": [player.serialize() for player in team.squad],
                     "matches": [match.to_dict() for match in team.matches],
                 } for name, team in self.teams_data.items()
             }
@@ -70,10 +76,15 @@ class App(tk.Tk):
     def load_match_screen(self, team_name, match_name):
         self.selected_team = team_name
         self.selected_match = match_name
-        players = self.teams_data[team_name].players
-        self.frames[MatchScreen].load_team_and_match(team_name, match_name, players)
-        self.show_frame(MatchScreen)
 
+        match = None
+        for m in self.teams_data[team_name].matches:
+            if m.name == match_name:
+                match = m
+                break
+        lineup = match.lineup
+        self.frames[MatchScreen].load_team_and_match(team_name, match_name, lineup)
+        self.show_frame(MatchScreen)
 
 # -------- Intro Screen --------
 class IntroScreen(ttk.Frame):
@@ -90,12 +101,15 @@ class IntroScreen(ttk.Frame):
         self.refresh_team_list()
 
         ttk.Button(self, text="Create New Team", command=self.create_team).pack(pady=5)
-        ttk.Button(self, text="Edit Team Players", command=self.edit_team_players).pack(pady=5)
+        ttk.Button(self, text="Edit Squad", command=self.open_edit_squad_popup).pack(pady=5)
 
         # Match Section
         ttk.Button(self, text="View Team Stats", command=self.view_stats).pack(pady=10)
         ttk.Button(self, text="Select Match", command=self.select_match).pack(pady=5)
         ttk.Button(self, text="Create New Match", command=self.create_match).pack(pady=5)
+
+    def open_edit_squad_popup(self):
+        EditSquadPopup(self.controller, self.controller.teams_data[self.get_selected_team()])
 
     def refresh_team_list(self):
         self.team_listbox.delete(0, tk.END)
@@ -119,23 +133,11 @@ class IntroScreen(ttk.Frame):
             return
 
         player_str = simpledialog.askstring("Team Players", "Enter player names (comma-separated):")
-        players = [p.strip() for p in player_str.split(",")] if player_str else []
+        squad = [p.strip() for p in player_str.split(",")] if player_str else []
 
-        self.controller.teams_data[name] = Team(name, players, [])
+        self.controller.teams_data[name] = Team(name, squad, [])
         self.controller.save_data()
         self.refresh_team_list()
-
-    def edit_team_players(self):
-        team = self.get_selected_team()
-        if not team:
-            return
-
-        current_players = self.controller.teams_data[team].players
-        default = ", ".join(pl.playerName for pl in current_players)
-        new_str = simpledialog.askstring("Edit Players", f"Edit player names (comma-separated):", initialvalue=default)
-        if new_str is not None:
-            self.controller.teams_data[team].players = [Player(p.strip()) for p in new_str.split(",")]
-            self.controller.save_data()
 
     def view_stats(self):
         team = self.get_selected_team()
@@ -187,6 +189,13 @@ class IntroScreen(ttk.Frame):
         if not team:
             return
 
+        # Load squad for selected team
+        squad = self.controller.teams_data[team].squad
+
+        if not squad:
+            messagebox.showerror("Error", "This team has no squad defined.")
+            return
+
         match_name = simpledialog.askstring("New Match", "Enter match name:")
         if not match_name:
             return
@@ -199,9 +208,21 @@ class IntroScreen(ttk.Frame):
         if match_opposition is None:
             return
 
+        # Launch player selector for this match
+        def handle_players_selected(players):
+            self.selected = players
+            self.controller.save_data()
+
+        selector = MatchPlayerSelector(self.master, squad, lineup=[], save_callback=handle_players_selected)
+        self.master.wait_window(selector.top)
+
+        if not selector.selected:
+            messagebox.showwarning("No players selected", "You must select at least one player.")
+            return
+
         team_obj = self.controller.teams_data[team]
         if match_name not in [m.name for m in team_obj.matches]:
-            new_match = Match(name=match_name, date=match_date, opponent=match_opposition)
+            new_match = Match(name=match_name, date=match_date, opponent=match_opposition, lineup=[x.playerName for x in selector.selected])
             team_obj.matches.append(new_match)
             self.controller.save_data()
             self.controller.load_match_screen(team, match_name)
@@ -249,9 +270,9 @@ class MatchScreen(ttk.Frame):
         self.title_label = ttk.Label(self.summarytab, text="", font=("Segoe UI", 14))
         self.title_label.pack(pady=10)
 
-    def load_team_and_match(self, team_name, match_name, players):
+    def load_team_and_match(self, team_name, match_name, lineup):
         self.title_label.config(text=f"Match: {match_name} | Team: {team_name}")
-        self.players = players  # Store for use in match tabs
+        self.lineup = lineup  # Store for use in match tabs
 
         self.selected_team = team_name
         self.selected_match = match_name
@@ -260,9 +281,9 @@ class MatchScreen(ttk.Frame):
             for row in tree.get_children():
                 tree.delete(row)
 
-        self.passingtab.load_passingtab_displays(players)
+        self.passingtab.load_passingtab_displays(lineup)
 
-        print("Players available for this match:", players)  # Use or pass to tabs as needed
+        print("Players available for this match:", lineup)  # Use or pass to tabs as needed
 
         # Get the current selected team and match name
         if not team_name or not match_name:
@@ -288,7 +309,7 @@ class MatchScreen(ttk.Frame):
         if match_data:
             # Load the passing data into the passing tab
             passing_data = match_data.get("passing_data", {})
-            self.passingtab.load_data(passing_data, [pl.playerName for pl in self.players])  # Assuming a method to load data into the passing tab
+            self.passingtab.load_data(passing_data, self.lineup)  # Assuming a method to load data into the passing tab
         else:
             messagebox.showerror("Error", "Match not found.")
 

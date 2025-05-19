@@ -1,474 +1,129 @@
 {
-    "teams": {
-        "Step Bros": {
-            "players": [
-                "Jack",
-                "Sam",
-                "Sol"
-            ],
-            "matches": [
-                {
-                    "name": "vs Waitemata",
-                    "date": "Saturday April 26th, 2025",
-                    "opponent": "Waitemata FC",
-                    "passing_data": {
-                        "comp": {
-                            "Jack": {
-                                "Jack": 0,
-                                "Sam": 0,
-                                "Sol": 0
-                            },
-                            "Sam": {
-                                "Jack": 0,
-                                "Sam": 0,
-                                "Sol": 0
-                            },
-                            "Sol": {
-                                "Jack": 0,
-                                "Sam": 0,
-                                "Sol": 0
-                            }
-                        },
-                        "incomp": {
-                            "Jack": {
-                                "Jack": 0,
-                                "Sam": 0,
-                                "Sol": 0
-                            },
-                            "Sam": {
-                                "Jack": 0,
-                                "Sam": 0,
-                                "Sol": 0
-                            },
-                            "Sol": {
-                                "Jack": 0,
-                                "Sam": 0,
-                                "Sol": 0
-                            }
-                        }
-                    }
-                }
-            ]
-        },
-        "Womens Reserves": {
-            "players": [
-                "Natasha",
-                "Caitlin",
-                "Ursula",
-                "Gracie",
-                "Sammy",
-                "Harriet",
-                "Rina",
-                "Bridget",
-                "Alice",
-                "Maja",
-                "Katie",
-                "Rose",
-                "Susie"
-            ],
-            "matches": [
-                {
-                    "name": "Round 3",
-                    "date": "2025-04-27",
-                    "opponent": "East Coast Bays",
-                    "passing_data": {
-                        "comp": {
-                            "Natasha": {
-                                "Natasha": 0,
-                                "Caitlin": 0,
-                                "Ursula": 0,
-                                "Gracie": 0,
-                                "Sammy": 0,
-                                "Harriet": 1,
-                                "Rina": 0,
-                                "Bridget": 0,
-                                "Alice": 0,
-                                "Maja": 2,
-                                "Katie": 0,
-                                "Rose": 0,
-                                "Susie": 1
-                            },
-                            "Caitlin": {
-                                "Natasha": 0,
-                                "Caitlin": 0,
-                                "Ursula": 0,
-                                "Gracie": 1,
-                                "Sammy": 1,
-                                "Harriet": 0,
-                                "Rina": 1,
-                                "Bridget": 0,
-                                "Alice": 1,
-                                "Maja": 1,
-                                "Katie": 1,
-                                "Rose": 0,
-                                "Susie": 1
-                            },
-                            "Ursula": {
-                                "Natasha": 0,
-                                "Caitlin": 2,
-                                "Ursula": 0,
-                                "Gracie": 1,
-                                "Sammy": 5,
-                                "Harriet": 0,
-                                "Rina": 0,
-                                "Bridget": 5,
-                                "Alice": 0,
-                                "Maja": 1,
-                                "Katie": 0,
-                                "Rose": 0,
-                                "Susie": 0
-                            },
-                            "Gracie": {
-                                "Natasha": 0,
-                                "Caitlin": 0,
-                                "Ursula": 0,
-                                "Gracie": 0,
-                                "Sammy": 1,
-                                "Harriet": 1,
-                                "Rina": 0,
-                                "Bridget": 2,
-                                "Alice": 0,
-                                "Maja": 0,
-                                "Katie": 0,
-                                "Rose": 0,
-                                "Susie": 0
-                            },
-                            "Sammy": {
-                                "Natasha": 1,
-                                "Caitlin": 1,
-                                "Ursula": 0,
-                                "Gracie": 1,
-                                "Sammy": 0,
-                                "Harriet": 1,
-                                "Rina": 0,
-                                "Bridget": 2,
-                                "Alice": 0,
-                                "Maja": 2,
-                                "Katie": 2,
-                                "Rose": 0,
-                                "Susie": 3
-                            },
-                            "Harriet": {
-                                "Natasha": 0,
-                                "Caitlin": 0,
-                                "Ursula": 0,
-                                "Gracie": 0,
-                                "Sammy": 1,
-                                "Harriet": 0,
-                                "Rina": 0,
-                                "Bridget": 1,
-                                "Alice": 0,
-                                "Maja": 0,
-                                "Katie": 2,
-                                "Rose": 0,
-                                "Susie": 0
-                            },
-                            "Rina": {
-                                "Natasha": 0,
-                                "Caitlin": 0,
-                                "Ursula": 2,
-                                "Gracie": 0,
-                                "Sammy": 1,
-                                "Harriet": 0,
-                                "Rina": 0,
-                                "Bridget": 2,
-                                "Alice": 1,
-                                "Maja": 0,
-                                "Katie": 1,
-                                "Rose": 0,
-                                "Susie": 0
-                            },
-                            "Bridget": {
-                                "Natasha": 0,
-                                "Caitlin": 1,
-                                "Ursula": 1,
-                                "Gracie": 0,
-                                "Sammy": 2,
-                                "Harriet": 2,
-                                "Rina": 0,
-                                "Bridget": 0,
-                                "Alice": 3,
-                                "Maja": 3,
-                                "Katie": 2,
-                                "Rose": 0,
-                                "Susie": 1
-                            },
-                            "Alice": {
-                                "Natasha": 0,
-                                "Caitlin": 0,
-                                "Ursula": 0,
-                                "Gracie": 0,
-                                "Sammy": 1,
-                                "Harriet": 0,
-                                "Rina": 0,
-                                "Bridget": 2,
-                                "Alice": 0,
-                                "Maja": 3,
-                                "Katie": 0,
-                                "Rose": 0,
-                                "Susie": 0
-                            },
-                            "Maja": {
-                                "Natasha": 0,
-                                "Caitlin": 0,
-                                "Ursula": 1,
-                                "Gracie": 0,
-                                "Sammy": 3,
-                                "Harriet": 0,
-                                "Rina": 0,
-                                "Bridget": 2,
-                                "Alice": 1,
-                                "Maja": 0,
-                                "Katie": 2,
-                                "Rose": 0,
-                                "Susie": 0
-                            },
-                            "Katie": {
-                                "Natasha": 0,
-                                "Caitlin": 2,
-                                "Ursula": 0,
-                                "Gracie": 0,
-                                "Sammy": 0,
-                                "Harriet": 1,
-                                "Rina": 0,
-                                "Bridget": 3,
-                                "Alice": 1,
-                                "Maja": 1,
-                                "Katie": 0,
-                                "Rose": 0,
-                                "Susie": 1
-                            },
-                            "Rose": {
-                                "Natasha": 0,
-                                "Caitlin": 0,
-                                "Ursula": 0,
-                                "Gracie": 0,
-                                "Sammy": 0,
-                                "Harriet": 0,
-                                "Rina": 1,
-                                "Bridget": 0,
-                                "Alice": 2,
-                                "Maja": 1,
-                                "Katie": 1,
-                                "Rose": 0,
-                                "Susie": 0
-                            },
-                            "Susie": {
-                                "Natasha": 0,
-                                "Caitlin": 1,
-                                "Ursula": 0,
-                                "Gracie": 0,
-                                "Sammy": 1,
-                                "Harriet": 0,
-                                "Rina": 0,
-                                "Bridget": 2,
-                                "Alice": 1,
-                                "Maja": 0,
-                                "Katie": 1,
-                                "Rose": 0,
-                                "Susie": 0
-                            }
-                        },
-                        "incomp": {
-                            "Natasha": {
-                                "Natasha": 0,
-                                "Caitlin": 0,
-                                "Ursula": 0,
-                                "Gracie": 0,
-                                "Sammy": 0,
-                                "Harriet": 0,
-                                "Rina": 0,
-                                "Bridget": 0,
-                                "Alice": 1,
-                                "Maja": 4,
-                                "Katie": 2,
-                                "Rose": 0,
-                                "Susie": 2
-                            },
-                            "Caitlin": {
-                                "Natasha": 0,
-                                "Caitlin": 0,
-                                "Ursula": 0,
-                                "Gracie": 0,
-                                "Sammy": 1,
-                                "Harriet": 1,
-                                "Rina": 0,
-                                "Bridget": 1,
-                                "Alice": 1,
-                                "Maja": 7,
-                                "Katie": 1,
-                                "Rose": 0,
-                                "Susie": 2
-                            },
-                            "Ursula": {
-                                "Natasha": 0,
-                                "Caitlin": 3,
-                                "Ursula": 0,
-                                "Gracie": 0,
-                                "Sammy": 1,
-                                "Harriet": 2,
-                                "Rina": 0,
-                                "Bridget": 0,
-                                "Alice": 1,
-                                "Maja": 8,
-                                "Katie": 2,
-                                "Rose": 0,
-                                "Susie": 2
-                            },
-                            "Gracie": {
-                                "Natasha": 0,
-                                "Caitlin": 0,
-                                "Ursula": 0,
-                                "Gracie": 0,
-                                "Sammy": 2,
-                                "Harriet": 2,
-                                "Rina": 0,
-                                "Bridget": 0,
-                                "Alice": 0,
-                                "Maja": 1,
-                                "Katie": 0,
-                                "Rose": 0,
-                                "Susie": 0
-                            },
-                            "Sammy": {
-                                "Natasha": 0,
-                                "Caitlin": 0,
-                                "Ursula": 0,
-                                "Gracie": 0,
-                                "Sammy": 0,
-                                "Harriet": 1,
-                                "Rina": 0,
-                                "Bridget": 1,
-                                "Alice": 0,
-                                "Maja": 9,
-                                "Katie": 5,
-                                "Rose": 0,
-                                "Susie": 3
-                            },
-                            "Harriet": {
-                                "Natasha": 0,
-                                "Caitlin": 0,
-                                "Ursula": 0,
-                                "Gracie": 0,
-                                "Sammy": 0,
-                                "Harriet": 0,
-                                "Rina": 0,
-                                "Bridget": 1,
-                                "Alice": 0,
-                                "Maja": 2,
-                                "Katie": 6,
-                                "Rose": 0,
-                                "Susie": 0
-                            },
-                            "Rina": {
-                                "Natasha": 0,
-                                "Caitlin": 0,
-                                "Ursula": 0,
-                                "Gracie": 0,
-                                "Sammy": 0,
-                                "Harriet": 1,
-                                "Rina": 0,
-                                "Bridget": 2,
-                                "Alice": 1,
-                                "Maja": 0,
-                                "Katie": 1,
-                                "Rose": 0,
-                                "Susie": 0
-                            },
-                            "Bridget": {
-                                "Natasha": 0,
-                                "Caitlin": 0,
-                                "Ursula": 0,
-                                "Gracie": 0,
-                                "Sammy": 4,
-                                "Harriet": 0,
-                                "Rina": 0,
-                                "Bridget": 0,
-                                "Alice": 1,
-                                "Maja": 8,
-                                "Katie": 4,
-                                "Rose": 0,
-                                "Susie": 0
-                            },
-                            "Alice": {
-                                "Natasha": 0,
-                                "Caitlin": 0,
-                                "Ursula": 0,
-                                "Gracie": 0,
-                                "Sammy": 1,
-                                "Harriet": 0,
-                                "Rina": 0,
-                                "Bridget": 1,
-                                "Alice": 0,
-                                "Maja": 4,
-                                "Katie": 2,
-                                "Rose": 0,
-                                "Susie": 0
-                            },
-                            "Maja": {
-                                "Natasha": 0,
-                                "Caitlin": 0,
-                                "Ursula": 0,
-                                "Gracie": 0,
-                                "Sammy": 0,
-                                "Harriet": 0,
-                                "Rina": 0,
-                                "Bridget": 0,
-                                "Alice": 1,
-                                "Maja": 0,
-                                "Katie": 3,
-                                "Rose": 0,
-                                "Susie": 0
-                            },
-                            "Katie": {
-                                "Natasha": 0,
-                                "Caitlin": 0,
-                                "Ursula": 0,
-                                "Gracie": 0,
-                                "Sammy": 0,
-                                "Harriet": 0,
-                                "Rina": 0,
-                                "Bridget": 0,
-                                "Alice": 1,
-                                "Maja": 0,
-                                "Katie": 0,
-                                "Rose": 0,
-                                "Susie": 0
-                            },
-                            "Rose": {
-                                "Natasha": 0,
-                                "Caitlin": 0,
-                                "Ursula": 0,
-                                "Gracie": 0,
-                                "Sammy": 0,
-                                "Harriet": 1,
-                                "Rina": 1,
-                                "Bridget": 0,
-                                "Alice": 0,
-                                "Maja": 1,
-                                "Katie": 0,
-                                "Rose": 0,
-                                "Susie": 0
-                            },
-                            "Susie": {
-                                "Natasha": 0,
-                                "Caitlin": 0,
-                                "Ursula": 0,
-                                "Gracie": 0,
-                                "Sammy": 1,
-                                "Harriet": 0,
-                                "Rina": 0,
-                                "Bridget": 0,
-                                "Alice": 0,
-                                "Maja": 4,
-                                "Katie": 0,
-                                "Rose": 0,
-                                "Susie": 0
-                            }
-                        }
-                    }
-                }
-            ]
+  "teams": {
+    "Step Bros": {
+      "squad": [],
+      "matches": [
+        {
+          "name": "vs Waitemata",
+          "date": "Saturday April 26th, 2025",
+          "opponent": "Waitemata FC",
+          "lineup": ""
         }
+      ]
+    },
+    "Womens Reserves": {
+      "squad": [
+        "Tash",
+        "Caitlin",
+        "Sammy",
+        "Georgiana",
+        "Maja",
+        "Melissa",
+        "Dorothea",
+        "Natalie",
+        "Bridget",
+        "Naiya",
+        "Ursula",
+        "Rose",
+        "Tehan",
+        "Harriet",
+        "Rina",
+        "Susie",
+        "Gracie",
+        "Katie",
+        "Alice",
+        "Dani",
+        "Ruby"
+      ],
+      "matches": [
+        {
+          "name": "Round 3",
+          "date": "2025-04-27",
+          "opponent": "East Coast Bays",
+          "lineup": [
+            "Tash",
+            "Caitlin",
+            "Ursula",
+            "Gracie",
+            "Sammy",
+            "Harriet",
+            "Rina",
+            "Bridget",
+            "Alice",
+            "Maja",
+            "Katie",
+            "Rose",
+            "Susie"
+          ]
+        },
+        {
+          "name": "Round 4",
+          "date": "2025-05-04",
+          "opponent": "Ellerslie AFC Roverines",
+          "lineup": [
+            "Tash",
+            "Naiya",
+            "Ursula",
+            "Sammy",
+            "Tehan",
+            "Bridget",
+            "Dorothea",
+            "Natalie",
+            "Georgiana",
+            "Maja",
+            "Melissa",
+            "Rose",
+            "Caitlin",
+            "Harriet",
+            "Rina",
+            "Susie",
+            "Dani"
+          ]
+        },
+        {
+          "name": "Cup Round 1",
+          "date": "2025-05-11",
+          "opponent": "Ellerslie",
+          "lineup": [
+            "Tash",
+            "Sammy",
+            "Georgiana",
+            "Maja",
+            "Melissa",
+            "Dorothea",
+            "Bridget",
+            "Ursula",
+            "Tehan",
+            "Susie",
+            "Gracie",
+            "Alice",
+            "Dani",
+            "Ruby"
+          ]
+        },
+        {
+          "name": "Round 5",
+          "date": "2025-05-18",
+          "opponent": "Lynn Avon",
+          "lineup": [
+            "Tash",
+            "Georgiana",
+            "Maja",
+            "Melissa",
+            "Natalie",
+            "Bridget",
+            "Ursula",
+            "Tehan",
+            "Harriet",
+            "Susie",
+            "Gracie",
+            "Katie",
+            "Alice",
+            "Dani",
+            "Ruby"
+          ]
+        }
+      ]
     }
+  }
 }

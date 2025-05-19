@@ -26,7 +26,6 @@ class PassingTab:
 
         self.addition = True
 
-
     def get_data(self):
         return {
             "comp": {
@@ -53,16 +52,20 @@ class PassingTab:
 
     def load_passingtab_displays(self, players):
 
-        players = [player.playerName for player in players]
         self.change_history = []
 
         self.tabControl.bind("<<NotebookTabChanged>>", lambda event: self.on_passing_tab_change(event, players))
+
+        for widget in self.table_tab.winfo_children():
+            widget.destroy()
 
         self.table_tab.grid_columnconfigure(0, weight=1, uniform="fred")
         self.table_tab.grid_columnconfigure(1, weight=2, uniform="fred")
         for i in range(2,len(players)*2+2):
             self.table_tab.grid_columnconfigure(i, weight=1, uniform="fred")
-        for i in range(len(players)*2 + 2,len(players)*2 + 5):
+
+        self.table_tab.grid_columnconfigure(len(players)*2 + 2, weight=2, uniform="fred")
+        for i in range(len(players)*2 + 3,len(players)*2 + 6):
             self.table_tab.grid_columnconfigure(i, weight=2, uniform="fred")
 
         for i in range(len(players) + 5):
@@ -72,17 +75,18 @@ class PassingTab:
         self.col_labels = {p: {"comp": None, "incomp": None} for p in players}
 
         self.team_comp_label = tk.Label(self.table_tab, text="0", font=("Segoe UI", 8, "bold"))
-        self.team_comp_label.grid(row=len(players)+3, column=len(players)*2 + 2)
+        self.team_comp_label.grid(row=len(players)+3, column=len(players)*2 + 3)
         self.team_incomp_label = tk.Label(self.table_tab, text="0", font=("Segoe UI", 8, "bold"))
-        self.team_incomp_label.grid(row=len(players)+3, column=len(players)*2 + 3)
+        self.team_incomp_label.grid(row=len(players)+3, column=len(players)*2 + 4)
         self.team_compperc_label = tk.Label(self.table_tab, text="0.0%", font=("Segoe UI", 8, "bold"))
-        self.team_compperc_label.grid(row=len(players)+3, column=len(players)*2 + 4)
+        self.team_compperc_label.grid(row=len(players)+3, column=len(players)*2 + 5)
 
         tk.Label(self.table_tab, text="To Player", font=("Segoe UI", 8, "bold"), anchor="center", justify="center").grid(row=0, column=2, columnspan=2)
         tk.Label(self.table_tab, text="From\nPlayer", font=("Segoe UI", 8, "bold"), anchor="center", justify="center").grid(row=3, column=0)
-        tk.Label(self.table_tab, text="Made\nComplete", font=("Segoe UI", 8, "bold"), anchor="center", justify="center").grid(row=2, column=len(players)*2 + 2)
-        tk.Label(self.table_tab, text="Made\nIncomplete", font=("Segoe UI", 8, "bold"), anchor="center", justify="center").grid(row=2, column=len(players)*2 + 3)
-        tk.Label(self.table_tab, text="Percentage\nMade\nComplete", font=("Segoe UI", 8, "bold"), anchor="center", justify="center").grid(row=2, column=len(players)*2 + 4)
+        tk.Label(self.table_tab, text="From\nPlayer", font=("Segoe UI", 8, "bold"), anchor="center", justify="center").grid(row=3, column=len(players)*2 + 2)
+        tk.Label(self.table_tab, text="Made\nComplete", font=("Segoe UI", 8, "bold"), anchor="center", justify="center").grid(row=2, column=len(players)*2 + 3)
+        tk.Label(self.table_tab, text="Made\nIncomplete", font=("Segoe UI", 8, "bold"), anchor="center", justify="center").grid(row=2, column=len(players)*2 + 4)
+        tk.Label(self.table_tab, text="Percentage\nMade\nComplete", font=("Segoe UI", 8, "bold"), anchor="center", justify="center").grid(row=2, column=len(players)*2 + 5)
         tk.Label(self.table_tab, text="Total", font=("Segoe UI", 8, "bold"), anchor="center", justify="center").grid(row=len(players)+3, column=1)
 
         self.passingcomp = {p1: {p2: 0 for p2 in players} for p1 in players}
@@ -103,8 +107,10 @@ class PassingTab:
         for i, p in enumerate(players):
             pcolheader = tk.Label(self.table_tab, text=f"{p}", font=("Segoe UI", 8, "bold"), anchor="center")
             prowheader = tk.Label(self.table_tab, text=f"{p}", font=("Segoe UI", 8, "bold"), anchor="center")
+            prowheader2 = tk.Label(self.table_tab, text=f"{p}", font=("Segoe UI", 8, "bold"), anchor="center")
             pcolheader.grid(row=1, column=2*i + 2, sticky="nswe", columnspan=2)
             prowheader.grid(row=i+3, column=1, sticky="nswe")
+            prowheader2.grid(row=i+3, column=len(players)*2 + 2, sticky="nswe")
 
             tk.Label(self.table_tab, text="", font=("Segoe UI", 9), anchor="center").grid(row=2, column=2*i + 2)
             tk.Label(self.table_tab, text="", font=("Segoe UI", 9), anchor="center").grid(row=2, column=2*i + 3)
@@ -112,9 +118,13 @@ class PassingTab:
             self.row_labels[p]["comp"] = tk.Label(self.table_tab, text="0")
             self.row_labels[p]["incomp"] = tk.Label(self.table_tab, text="0")
             self.row_labels[p]["percent"] = tk.Label(self.table_tab, text="0%")
-            self.row_labels[p]["comp"].grid(row=i+3, column=len(players)*2 + 2)
-            self.row_labels[p]["incomp"].grid(row=i+3, column=len(players)*2 + 3)
-            self.row_labels[p]["percent"].grid(row=i+3, column=len(players)*2 + 4)
+            self.row_labels[p]["comp"].grid(row=i+3, column=len(players)*2 + 3)
+            self.row_labels[p]["incomp"].grid(row=i+3, column=len(players)*2 + 4)
+            self.row_labels[p]["percent"].grid(row=i+3, column=len(players)*2 + 5)
+
+            style = ttk.Style()
+            style.configure("Comp.TButton", background="#bfd880", font=("Segoe UI", 8))
+            style.configure("Incomp.TButton", background="#fa7e70", font=("Segoe UI", 8))
 
             for i2, p2 in enumerate(players):
                 if p != p2:
@@ -207,7 +217,7 @@ class PassingTab:
                     if val > 0:
                         G.add_edge(p1, p2, weight=val)
 
-        pos = nx.spring_layout(G, k=0.5, iterations=50)
+        pos = nx.spring_layout(G)
 
         # Calculate node sizes
         node_pass_counts = {}
